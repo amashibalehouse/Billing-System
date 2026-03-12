@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Amashi Bale House</title>
+    
+    <!-- Favicon - Clothing Emoji -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+    
+    <!-- Font Awesome 6 for WhatsApp icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /*-----------------------------------------------*/
+        /*  GLOBAL STYLES - MOBILE FIRST                 */
+        /*-----------------------------------------------*/
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%),
+                        url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;XZ
+            *
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 5px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 15px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 22px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        h1 span {
+            font-size: 22px;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  CUSTOMER SECTION - Mobile Optimized          */
+        /*-----------------------------------------------*/
+        
+        .customer-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px;
+            border-radius: 18px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid #ffffff50;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .customer-row {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px;
+            border-radius: 14px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .customer-row label {
+            font-weight: bold;
+            color: #333;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 2px;
+        }
+        
+        .customer-row input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            font-size: 16px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .customer-row input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+        
+        .customer-row .balance-amount {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 16px;
+            background: #e8f5e9;
+            border-radius: 14px;
+            border: 2px solid #28a745;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .balance-positive {
+            color: #28a745;
+        }
+        
+        .balance-negative {
+            color: #dc3545;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  ITEMS HEADER (Hidden in Mobile)              */
+        /*-----------------------------------------------*/
+        
+        .items-header {
+            display: none;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  MAIN CONTENT LAYOUT - Mobile                 */
+        /*-----------------------------------------------*/
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .buttons-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .summary-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  SUMMARY SECTION - Mobile                     */
+        /*-----------------------------------------------*/
+        
+        .summary {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            text-align: center;
+            width: fit-content;
+            min-width: 160px;
+            max-width: 100%;
+            display: inline-block;
+        }
+        
+        .summary-item {
+            padding: 2px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .summary-item h3 {
+            font-size: 18px;
+            margin-bottom: 2px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        .summary-item h3 span {
+            font-size: 18px;
+        }
+        
+        .summary-item .total-amount {
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            word-break: break-word;
+            line-height: 1.2;
+        }
+        
+        .summary-item .total-qty {
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 4px;
+            display: inline-block;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  ITEM CARD - Mobile Optimized                 */
+        /*-----------------------------------------------*/
+        
+        .item-row {
+            background: white;
+            border-radius: 18px;
+            margin-bottom: 14px;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .item-row:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .item-row.has-price-error {
+            border-color: #dc3545;
+        }
+        
+        .item-header-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .item-number {
+            background: #667eea;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+        }
+        
+        .item-row .item-name {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            font-size: 16px;
+            background: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            text-align: center;
+        }
+        
+        .row-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .item-row .item-price,
+        .item-row .item-qty {
+            width: 100%;
+            padding: 16px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            font-size: 18px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        
+        /* Mobile number pad styles */
+        .item-row .item-qty {
+            -moz-appearance: textfield;
+        }
+        
+        .item-row .item-qty::-webkit-outer-spin-button,
+        .item-row .item-qty::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .item-row .item-price.error {
+            border-color: #dc3545;
+            background-color: #fff0f0;
+            box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+        }
+        
+        .action-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .item-row .item-total {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+            text-align: center;
+            background: #e8f5e9;
+            padding: 14px 12px;
+            border-radius: 14px;
+            border: 2px solid #28a745;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            width: 100%;
+            height: 60px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 28px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .remove-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+        }
+        
+        .remove-btn:active {
+            transform: translateY(0);
+            background: #b21f2d;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  BUTTONS - Mobile Optimized                   */
+        /*-----------------------------------------------*/
+        
+        .add-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 18px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .print-btn, .clear-btn {
+            width: 100%;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .print-btn {
+            background: #17a2b8;
+            color: white;
+            box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+        }
+        
+        .clear-btn {
+            background: #6c757d;
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        
+        .add-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+        }
+        
+        .print-btn:hover {
+            background: #138496;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(23, 162, 184, 0.4);
+        }
+        
+        .clear-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(108, 117, 125, 0.4);
+        }
+        
+        .print-btn:active, .clear-btn:active, .add-btn:active, .remove-btn:active {
+            transform: translateY(0);
+        }
+        
+        /*-----------------------------------------------*/
+        /*  EMPTY MESSAGE                                */
+        /*-----------------------------------------------*/
+        
+        .empty-message {
+            text-align: center;
+            padding: 35px 15px;
+            color: #999;
+            font-size: 16px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            margin: 15px 0;
+            border: 2px dashed #ccc;
+            line-height: 1.6;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  VALIDATION TOAST                             */
+        /*-----------------------------------------------*/
+        
+        .validation-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #dc3545;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 1000;
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            max-width: 90%;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        /*-----------------------------------------------*/
+        /*  UTILITY CLASSES                              */
+        /*-----------------------------------------------*/
+        
+        input, button, select {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        /* Remove spinner from number inputs */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select option {
+            text-align: center;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  WHATSAPP ICON STYLE                          */
+        /*-----------------------------------------------*/
+        
+        .whatsapp-icon {
+            color: #25D366;
+            font-size: 18px;
+            margin-right: 5px;
+        }
+        
+        .contact-item i {
+            font-size: 18px;
+        }
+        
+        .contact-item .fa-whatsapp {
+            color: #25D366;
+        }
+        
+        .contact-item .fa-phone-alt {
+            color: #667eea;
+        }
+        
+        /*-----------------------------------------------*/
+        /*  EXTRA SMALL DEVICES (under 380px)            */
+        /*-----------------------------------------------*/
+        
+        @media (max-width: 380px) {
+            .container {
+                padding: 10px 8px;
+            }
+            
+            h1 {
+                font-size: 18px;
+            }
+            
+            h1 span {
+                font-size: 18px;
+            }
+            
+            .summary-item .total-amount {
+                font-size: 18px;
+            }
+            
+            .summary-item .total-qty {
+                font-size: 12px;
+            }
+            
+            .summary {
+                min-width: 140px;
+                padding: 8px 10px;
+            }
+            
+            .action-row {
+                grid-template-columns: 1.5fr 1fr;
+                gap: 8px;
+            }
+            
+            .remove-btn {
+                font-size: 24px;
+                height: 50px;
+            }
+            
+            .item-row .item-price,
+            .item-row .item-qty {
+                font-size: 16px;
+                padding: 12px 8px;
+            }
+            
+            .add-btn, .print-btn, .clear-btn {
+                padding: 14px 16px;
+                font-size: 18px;
+            }
+            
+            .item-row {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <h1>
+            <span>👚</span>
+            <span>Amashi Bale House</span>
+            <span>👗</span>
+        </h1>
+        
+        <!-- Customer & Payment Section - Merged into one div -->
+        <div class="customer-section">
+            <!-- Customer Name Row -->
+            <div class="customer-row">
+                <label for="customerName">👤 Customer Name</label>
+                <input type="text" id="customerName" placeholder="Customer Name" autofocus>
+            </div>
+            
+            <!-- Paid Amount Row -->
+            <div class="customer-row">
+                <label for="paidAmount">💰 Paid Amount</label>
+                <input type="text" id="paidAmount" placeholder="Paid Amount" inputmode="numeric" pattern="[0-9]*">
+            </div>
+            
+            <!-- Balance Row -->
+            <div class="customer-row">
+                <label for="balanceAmount">💳 Balance</label>
+                <div class="balance-amount" id="balanceAmount">Rs. 0</div>
+            </div>
+        </div>
+        
+        <!-- Desktop Headers (Hidden in mobile) -->
+        <div class="items-header">
+            <span>#</span>
+            <span>🧦 Item</span>
+            <span>💲 Price</span>
+            <span>🔢 Qty</span>
+            <span>📊 Total</span>
+            <span>🗑️ Remove</span>
+        </div>
+        
+        <!-- Items List Container -->
+        <div id="itemsList"></div>
+        
+        <!-- Main Action Area -->
+        <div class="main-content">
+            <div class="buttons-container" id="buttonsContainer"></div>
+            <div class="summary-container" id="summaryContainer"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="validationToast" class="validation-toast" style="display: none;"></div>
+
+    <!-- JavaScript -->
+    <script>
+        (function() {
+            "use strict";
+            
+            /*-----------------------------------------------*/
+            /*  CONSTANTS - Trousers එකතු කරපු තැන          */
+            /*-----------------------------------------------*/
+            
+            const ITEM_OPTIONS = ['Bags', 'Blouse', 'Frock', 'Leggings', 'Other', 'Shorts', 'Skirt', 'Slippers', 'T-shirt', 'Trousers', 'Panty'];
+
+            ITEM_OPTIONS.sort((a, b) => a.localeCompare(b));
+
+            const PHONE_NUMBER = '071-70 333 47';
+
+            console.log(ITEM_OPTIONS);
+            
+            
+            /* Month names array */
+            const MONTH_NAMES = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            
+            /*-----------------------------------------------*/
+            /*  FORMATTER CLASS                              */
+            /*-----------------------------------------------*/
+            
+            class Formatter {
+                static formatNumberWithCommas(number) {
+                    const num = Math.round(parseFloat(number) || 0);
+                    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                }
+                
+                static getCurrentDateTime() {
+                    const now = new Date();
+                    const month = MONTH_NAMES[now.getMonth()];
+                    const day = now.getDate();
+                    const year = now.getFullYear();
+                    
+                    let hours = now.getHours();
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const ampm = hours >= 12 ? 'PM' : 'AM';
+                    
+                    hours = hours % 12 || 12;
+                    
+                    return `${month} ${day}, ${year}, ${hours}:${minutes} ${ampm}`;
+                }
+                
+                static showToast(message) {
+                    const toast = document.getElementById('validationToast');
+                    toast.textContent = message;
+                    toast.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                    }, 3000);
+                }
+            }
+            
+            /*-----------------------------------------------*/
+            /*  ITEM MODEL CLASS                             */
+            /*-----------------------------------------------*/
+            
+            class Item {
+                constructor(id, name = 'T-shirt', price = 0, quantity = 1) {
+                    this.id = id;
+                    this.name = name;
+                    this.price = price;
+                    this.quantity = quantity;
+                }
+                
+                getTotal() {
+                    return (this.price || 0) * (this.quantity || 0);
+                }
+            }
+            
+            /*-----------------------------------------------*/
+            /*  BILLING SERVICE CLASS                        */
+            /*-----------------------------------------------*/
+            
+            class BillingService {
+                static generateItemsHTML(items) {
+                    return items.map((item, index) => `
+                        <tr>
+                            <td style="text-align: center; font-weight: bold; width: 50px;">${index + 1}</td>
+                            <td style="text-align: center;">${item.name}</td>
+                            <td style="text-align: center;">Rs. ${Formatter.formatNumberWithCommas(item.price)}</td>
+                            <td style="text-align: center;">${item.quantity}</td>
+                            <td style="text-align: center;">Rs. ${Formatter.formatNumberWithCommas(item.getTotal())}</td>
+                        </tr>
+                    `).join('');
+                }
+                
+                static printBill(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance) {
+                    const itemsHTML = this.generateItemsHTML(items);
+                    
+                    const printWindow = window.open('', '_blank');
+                    printWindow.document.write(`
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <title>Amashi Bale House</title>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                            <style>
+                                * {
+                                    margin: 0;
+                                    padding: 0;
+                                    box-sizing: border-box;
+                                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                                }
+                                body {
+                                    background: #f5f5f5;
+                                    padding: 5px;
+                                    min-height: 100vh;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+                                .bill-card {
+                                    max-width: 100%;
+                                    width: 100%;
+                                    margin: 0 auto;
+                                    background: white;
+                                    border-radius: 15px;
+                                    padding: 0px;
+                                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                }
+                                .header {
+                                    text-align: center;
+                                    margin-bottom: 0px;
+                                    border-bottom: 2px solid #667eea;
+                                    padding-bottom: 0px;
+                                }
+                                .header h1 {
+                                    color: #333;
+                                    font-size: 16px;
+                                    margin-bottom: 5px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: 8px;
+                                }
+                                .header p {
+                                    color: #666;
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                }
+                                .customer-info {
+                                    background: #f8f9fa;
+                                    padding: 0px 12px;
+                                    border-radius: 10px;
+                                    margin-bottom: 3px;
+                                    text-align: center;
+                                    font-size: 13px;
+                                    color: #333;
+                                    border: 1px solid #e0e0e0;
+                                }
+                                table {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    margin-bottom: 15px;
+                                    font-size: 13px;
+                                }
+                                th {
+                                    background: #667eea;
+                                    color: white;
+                                    padding: 8px 4px;
+                                    font-size: 13px;
+                                    font-weight: 600;
+                                    text-align: center;
+                                }
+                                th:first-child { border-radius: 8px 0 0 0; }
+                                th:last-child { border-radius: 0 8px 0 0; }
+                                td {
+                                    padding: 6px 4px;
+                                    border-bottom: 1px solid #e0e0e0;
+                                    text-align: center;
+                                }
+                                
+                                /* Total section - Single row */
+                                .total-section {
+                                    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+                                    color: white;
+                                    padding: 2px 12px;
+                                    border-radius: 12px;
+                                    margin-top: 2px;
+                                    text-align: center;
+                                }
+                                
+                                .total-row {
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    gap: 5px;
+                                    flex-wrap: wrap;
+                                }
+                                
+                                .total-row h3 {
+                                    font-size: 15px;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 3px;
+                                    margin: 0;
+                                    white-space: nowrap;
+                                }
+                                
+                                .total-row h3 span {
+                                    font-size: 15px;
+                                }
+                                
+                                .grand-total {
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                    color: #ffd700;
+                                    white-space: nowrap;
+                                }
+                                
+                                .total-qty-badge {
+                                    font-size: 13px;
+                                    font-weight: bold;
+                                    background: rgba(255, 255, 255, 0.2);
+                                    padding: 3px 10px;
+                                    border-radius: 20px;
+                                    display: inline-block;
+                                    white-space: nowrap;
+                                }
+                                
+                                .payment-details {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 8px;
+                                    margin-top: 0px;
+                                    padding: 0px;
+                                    background: #f8f9fa;
+                                    border-radius: 10px;
+                                }
+                                .payment-item {
+                                    text-align: center;
+                                }
+                                .payment-item .label {
+                                    font-size: 12px;
+                                    color: #666;
+                                    margin-bottom: 2px;
+                                }
+                                .payment-item .value {
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                }
+                                .balance-positive {
+                                    color: #28a745;
+                                }
+                                .balance-negative {
+                                    color: #dc3545;
+                                }
+                                .footer {
+                                    text-align: center;
+                                    margin-top: 0px;
+                                    padding-top: 0px;
+                                    border-top: 1px dashed #ccc;
+                                }
+                                .footer p {
+                                    color: #666;
+                                    font-size: 10px;
+                                    margin: 3px 0;
+                                }
+                                .contact-info {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    gap: 5px;
+                                    margin-top: 4px;
+                                    font-size: 12px;
+                                }
+                                .contact-item {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 5px;
+                                    font-weight: 500;
+                                }
+                                .contact-item i {
+                                    font-size: 14px;
+                                }
+                                .contact-item .fa-phone-alt {
+                                    color: #667eea;
+                                }
+                                .contact-item .fa-whatsapp {
+                                    color: #25D366;
+                                }
+                                @media print {
+                                    body { background: white; padding: 0; }
+                                    .bill-card { box-shadow: none; padding: 5px; }
+                                }
+                                @media (max-width: 350px) {
+                                    .total-row {
+                                        flex-direction: column;
+                                        gap: 5px;
+                                    }
+                                    .grand-total {
+                                        font-size: 16px;
+                                    }
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class="bill-card">
+                                <div class="header">
+                                    <h1>
+                                        <span>👚</span>
+                                        <span>Amashi Bale House</span>
+                                        <span>👗</span>
+                                    </h1>
+                                    <p>${dateTime}</p>
+                                </div>
+                                <div class="customer-info">👤 <strong>${customerName}</strong></div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Item</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>${itemsHTML}</tbody>
+                                </table>
+                                
+                                <!-- Total Section - Single Row -->
+                                <div class="total-section">
+                                    <div class="total-row">
+                                        <h3><span>💰</span><strong>Total</strong><span>💲</span></h3>
+                                        <strong class="grand-total">${grandTotal}</strong>
+                                        <span class="total-qty-badge">🧦 Items : ${totalQty}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-details">
+                                    <div class="payment-item">
+                                        <div class="label">💰 Paid Amount</div>
+                                        <div class="value">${paidAmount ? `Rs. ${Formatter.formatNumberWithCommas(paidAmount)}` : 'Rs. 0'}</div>
+                                    </div>
+                                    <div class="payment-item">
+                                        <div class="label">💳 Balance</div>
+                                        <div class="value ${balance >= 0 ? 'balance-positive' : 'balance-negative'}">
+                                            ${balance ? `Rs. ${Formatter.formatNumberWithCommas(Math.abs(balance))}` : 'Rs. 0'}
+                                            ${balance < 0 ? ' (Due)' : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="footer">
+                                    <p>
+                                    ✨ Thanks for Shopping ✨<br>
+                                    <strong>No Exchanges or Returns.</strong>
+                                    </p>
+                                    <div class="contact-info">
+                                        <div class="contact-item">
+                                            <i class="fas fa-phone-alt"></i> | 
+                                            <i class="fab fa-whatsapp"></i>
+                                            <span>${PHONE_NUMBER}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>window.onload = () => window.print();<\/script>
+                        </body>
+                        </html>
+                    `);
+                    printWindow.document.close();
+                }
+            }
+            
+            /*-----------------------------------------------*/
+            /*  BILLING CONTROLLER CLASS                     */
+            /*-----------------------------------------------*/
+            
+            class BillingController {
+                constructor() {
+                    this.items = [];
+                    this.itemCount = 0;
+                    this.customerNameInput = document.getElementById('customerName');
+                    this.paidAmountInput = document.getElementById('paidAmount');
+                    this.balanceDisplay = document.getElementById('balanceAmount');
+                    this.itemsListElement = document.getElementById('itemsList');
+                    this.buttonsContainer = document.getElementById('buttonsContainer');
+                    this.summaryContainer = document.getElementById('summaryContainer');
+                    
+                    this.initializeUI();
+                    this.attachEvents();
+                    this.setupEnterKeyNavigation();
+                    
+                    // Show empty message on initial load
+                    this.showEmptyMessage();
+                    
+                    // Use requestAnimationFrame for better performance
+                    requestAnimationFrame(() => {
+                        this.customerNameInput.focus();
+                        
+                        // Only attempt to open keyboard on first load
+                        if ('ontouchstart' in window && !sessionStorage.getItem('keyboardShown')) {
+                            setTimeout(() => {
+                                this.customerNameInput.click();
+                                this.customerNameInput.select();
+                                sessionStorage.setItem('keyboardShown', 'true');
+                            }, 300);
+                        }
+                    });
+                }
+                
+                /*-------------------------------------------*/
+                /*  UI Initialization                        */
+                /*-------------------------------------------*/
+                
+                initializeUI() {
+                    // Create buttons
+                    this.buttonsContainer.innerHTML = `
+                        <button class="add-btn" id="addItemBtn">
+                            <span>➕</span>
+                            <span>Add Item</span>
+                        </button>
+                        <button class="print-btn" id="printBillBtn">
+                            <span>🖨️</span>
+                            <span>Print Bill</span>
+                        </button>
+                        <button class="clear-btn" id="clearAllBtn">
+                            <span>🔄</span>
+                            <span>Clear All</span>
+                        </button>
+                    `;
+                    
+                    // Create summary with total amount and total quantity
+                    this.summaryContainer.innerHTML = `
+                        <div class="summary">
+                            <div class="summary-item">
+                                <h3><span>💰</span><strong>Total</strong><span>💲</span></h3>
+                                <div class="total-amount" id="grandTotal">Rs. 0</div>
+                                <div class="total-qty" id="totalQuantity">🧦 Items : 0</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                /*-------------------------------------------*/
+                /*  Event Listeners                          */
+                /*-------------------------------------------*/
+                
+                attachEvents() {
+                    document.getElementById('addItemBtn').addEventListener('click', () => this.addNewItem());
+                    document.getElementById('printBillBtn').addEventListener('click', () => this.printBill());
+                    document.getElementById('clearAllBtn').addEventListener('click', () => this.clearAll());
+                    
+                    // Add keydown event for customer name Enter key
+                    this.customerNameInput.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            this.focusOnFirstItemPrice();
+                        }
+                    });
+                    
+                    // Add input event for paid amount to calculate balance
+                    this.paidAmountInput.addEventListener('input', () => this.updateBalance());
+                    this.paidAmountInput.addEventListener('keypress', (e) => this.allowOnlyNumbers(e));
+                }
+                
+                /*-------------------------------------------*/
+                /*  Balance Calculation                      */
+                /*-------------------------------------------*/
+                
+                updateBalance() {
+                    const grandTotalElement = document.getElementById('grandTotal');
+                    const grandTotalText = grandTotalElement ? grandTotalElement.textContent : 'Rs. 0';
+                    const grandTotal = parseFloat(grandTotalText.replace('Rs. ', '').replace(/,/g, '')) || 0;
+                    
+                    // Get paid amount - if empty, treat as 0
+                    const paidAmountValue = this.paidAmountInput.value.replace(/[^0-9]/g, '');
+                    const paidAmount = paidAmountValue === '' ? 0 : parseFloat(paidAmountValue) || 0;
+                    
+                    const balance = paidAmount - grandTotal;
+                    
+                    // Update balance display
+                    this.balanceDisplay.textContent = `Rs. ${Formatter.formatNumberWithCommas(Math.abs(balance))}`;
+                    
+                    // Add class based on balance
+                    if (balance >= 0) {
+                        this.balanceDisplay.classList.add('balance-positive');
+                        this.balanceDisplay.classList.remove('balance-negative');
+                    } else {
+                        this.balanceDisplay.classList.add('balance-negative');
+                        this.balanceDisplay.classList.remove('balance-positive');
+                    }
+                    
+                    // Add text indicator for due amount
+                    if (balance < 0) {
+                        this.balanceDisplay.textContent += ' (Due)';
+                    }
+                    
+                    return balance;
+                }
+                
+                /*-------------------------------------------*/
+                /*  Focus on First Item Price                */
+                /*-------------------------------------------*/
+                
+                focusOnFirstItemPrice() {
+                    const firstItemPrice = document.querySelector('.item-price');
+                    if (firstItemPrice) {
+                        firstItemPrice.focus();
+                        
+                        // For mobile: open keyboard
+                        if ('ontouchstart' in window) {
+                            setTimeout(() => {
+                                firstItemPrice.click();
+                                firstItemPrice.select();
+                            }, 100);
+                        }
+                    } else {
+                        // If no items exist, focus on Add Item button
+                        document.getElementById('addItemBtn').focus();
+                    }
+                }
+                
+                /*-------------------------------------------*/
+                /*  Enter Key Navigation Setup               */
+                /*-------------------------------------------*/
+                
+                setupEnterKeyNavigation() {
+                    // Listen for keypress events on the document
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') {
+                            const activeElement = document.activeElement;
+                            
+                            // Customer name input - handled separately above
+                            // Item price input
+                            if (activeElement.classList.contains('item-price')) {
+                                e.preventDefault();
+                                // Find the corresponding qty input in the same item row
+                                const itemRow = activeElement.closest('.item-row');
+                                if (itemRow) {
+                                    const qtyInput = itemRow.querySelector('.item-qty');
+                                    if (qtyInput) {
+                                        qtyInput.focus();
+                                        // For mobile: open keyboard
+                                        if ('ontouchstart' in window) {
+                                            setTimeout(() => {
+                                                qtyInput.click();
+                                                qtyInput.select();
+                                            }, 50);
+                                        }
+                                    }
+                                }
+                            }
+                            // Item qty input
+                            else if (activeElement.classList.contains('item-qty')) {
+                                e.preventDefault();
+                                // Find the next item's price input
+                                const itemRow = activeElement.closest('.item-row');
+                                if (itemRow) {
+                                    const nextItemRow = itemRow.nextElementSibling;
+                                    if (nextItemRow && nextItemRow.classList.contains('item-row')) {
+                                        const nextPriceInput = nextItemRow.querySelector('.item-price');
+                                        if (nextPriceInput) {
+                                            nextPriceInput.focus();
+                                            // For mobile: open keyboard
+                                            if ('ontouchstart' in window) {
+                                                setTimeout(() => {
+                                                    nextPriceInput.click();
+                                                    nextPriceInput.select();
+                                                }, 50);
+                                            }
+                                        }
+                                    } else {
+                                        // If no next item, focus on Add Item button
+                                        document.getElementById('addItemBtn').focus();
+                                    }
+                                }
+                            }
+                            // Paid amount input
+                            else if (activeElement.id === 'paidAmount') {
+                                e.preventDefault();
+                                // Focus on print bill button
+                                document.getElementById('printBillBtn').focus();
+                            }
+                        }
+                    });
+                }
+                
+                /*-------------------------------------------*/
+                /*  Focus on New Item Price with Numpad      */
+                /*-------------------------------------------*/
+                
+                focusOnNewItemPrice() {
+                    // Small delay to ensure DOM is updated
+                    setTimeout(() => {
+                        // Get all price inputs
+                        const priceInputs = document.querySelectorAll('.item-price');
+                        if (priceInputs.length > 0) {
+                            // Focus on the last price input (newly added item)
+                            const lastPriceInput = priceInputs[priceInputs.length - 1];
+                            lastPriceInput.focus();
+                            
+                            // For mobile: trigger keyboard
+                            if ('ontouchstart' in window) {
+                                setTimeout(() => {
+                                    lastPriceInput.click();
+                                    lastPriceInput.select();
+                                }, 50);
+                            }
+                        }
+                    }, 100);
+                }
+                
+                /*-------------------------------------------*/
+                /*  Item Management                          */
+                /*-------------------------------------------*/
+                
+                addNewItem(name = 'T-shirt', price = '', quantity = '') {
+                    this.removeEmptyMessage();
+                    
+                    this.itemCount++;
+                    // Parse quantity only if it has a value, otherwise default to 1 for calculations
+                    const parsedQuantity = quantity === '' ? 1 : parseInt(quantity) || 1;
+                    const newItem = new Item(this.itemCount, name, parseFloat(price) || 0, parsedQuantity);
+                    this.items.push(newItem);
+                    
+                    const itemRow = this.createItemRow(newItem, quantity);
+                    this.itemsListElement.appendChild(itemRow);
+                    this.calculateAll();
+                    this.checkPriceErrors();
+                    
+                    // Focus on the new item's price input and open numpad
+                    this.focusOnNewItemPrice();
+                }
+                
+                createItemRow(item, quantityValue = '') {
+                    const itemRow = document.createElement('div');
+                    itemRow.className = 'item-row';
+                    itemRow.id = `item-${item.id}`;
+                    
+                    const optionsHTML = ITEM_OPTIONS.map(opt => 
+                        `<option value="${opt}" ${item.name === opt ? 'selected' : ''}>${opt}</option>`
+                    ).join('');
+                    
+                    itemRow.innerHTML = `
+                        <div class="item-header-row">
+                            <div class="item-number">${item.id}</div>
+                            <select class="item-name" data-id="${item.id}">
+                                ${optionsHTML}
+                            </select>
+                        </div>
+                        <div class="row-fields">
+                            <input type="text" class="item-price" data-id="${item.id}" placeholder="Price" value="${item.price || ''}" inputmode="numeric" pattern="[0-9]*">
+                            <input type="text" class="item-qty" data-id="${item.id}" placeholder="Qty" value="${quantityValue}" inputmode="numeric" pattern="[0-9]*">
+                        </div>
+                        <div class="action-row">
+                            <span class="item-total" id="total-${item.id}">Rs. 0</span>
+                            <button class="remove-btn" data-id="${item.id}">✖</button>
+                        </div>
+                    `;
+                    
+                    // Attach event listeners
+                    itemRow.querySelector('.item-name').addEventListener('change', (e) => this.updateItem(e, 'name'));
+                    itemRow.querySelector('.item-price').addEventListener('input', (e) => this.updateItem(e, 'price'));
+                    itemRow.querySelector('.item-price').addEventListener('blur', (e) => this.checkPriceField(e));
+                    itemRow.querySelector('.item-qty').addEventListener('input', (e) => this.updateItem(e, 'quantity'));
+                    itemRow.querySelector('.remove-btn').addEventListener('click', (e) => this.removeItem(e));
+                    
+                    // Add keypress handler to ensure only numbers
+                    itemRow.querySelector('.item-price').addEventListener('keypress', (e) => this.allowOnlyNumbers(e));
+                    itemRow.querySelector('.item-qty').addEventListener('keypress', (e) => this.allowOnlyNumbers(e));
+                    
+                    return itemRow;
+                }
+                
+                allowOnlyNumbers(e) {
+                    // Allow only digits (0-9)
+                    const charCode = e.which ? e.which : e.keyCode;
+                    if (charCode < 48 || charCode > 57) {
+                        e.preventDefault();
+                    }
+                }
+                
+                removeItem(event) {
+                    const id = parseInt(event.target.dataset.id);
+                    const itemIndex = this.items.findIndex(i => i.id === id);
+                    if (itemIndex === -1) return;
+                    
+                    this.items.splice(itemIndex, 1);
+                    document.getElementById(`item-${id}`).remove();
+                    
+                    this.reindexItems();
+                    
+                    if (this.items.length === 0) {
+                        this.showEmptyMessage();
+                    }
+                    
+                    this.calculateAll();
+                }
+                
+                reindexItems() {
+                    const rows = document.querySelectorAll('.item-row');
+                    this.itemCount = rows.length;
+                    
+                    rows.forEach((row, index) => {
+                        const newId = index + 1;
+                        const oldId = parseInt(row.id.split('-')[1]);
+                        
+                        row.id = `item-${newId}`;
+                        row.querySelector('.item-number').textContent = newId;
+                        
+                        // Update data-id attributes
+                        row.querySelectorAll('[data-id]').forEach(el => el.dataset.id = newId);
+                        
+                        // Update total span id
+                        const totalSpan = document.getElementById(`total-${oldId}`);
+                        if (totalSpan) {
+                            totalSpan.id = `total-${newId}`;
+                        }
+                        
+                        // Update item in array
+                        const item = this.items.find(i => i.id === oldId);
+                        if (item) item.id = newId;
+                    });
+                }
+                
+                /*-------------------------------------------*/
+                /*  Validation Methods                       */
+                /*-------------------------------------------*/
+                
+                checkPriceField(event) {
+                    const priceInput = event.target;
+                    const value = priceInput.value;
+                    
+                    if (!value || value === '' || parseFloat(value) <= 0) {
+                        priceInput.classList.add('error');
+                    } else {
+                        priceInput.classList.remove('error');
+                    }
+                    
+                    this.checkPriceErrors();
+                }
+                
+                checkPriceErrors() {
+                    let hasError = false;
+                    
+                    this.items.forEach(item => {
+                        const priceInput = document.querySelector(`.item-price[data-id="${item.id}"]`);
+                        if (priceInput && priceInput.classList.contains('error')) {
+                            hasError = true;
+                        }
+                    });
+                    
+                    return hasError;
+                }
+                
+                validatePrices() {
+                    if (this.items.length === 0) {
+                        Formatter.showToast('Please add items first!');
+                        return false;
+                    }
+                    
+                    // Check each price field
+                    for (const item of this.items) {
+                        const priceInput = document.querySelector(`.item-price[data-id="${item.id}"]`);
+                        
+                        if (!priceInput.value || priceInput.value === '' || parseFloat(priceInput.value) <= 0) {
+                            priceInput.classList.add('error');
+                            Formatter.showToast(`Item ${item.id}: Please enter a valid price`);
+                            return false;
+                        }
+                    }
+                    
+                    return true;
+                }
+                
+                /*-------------------------------------------*/
+                /*  Calculations                             */
+                /*-------------------------------------------*/
+                
+                updateItem(event, field) {
+                    const id = parseInt(event.target.dataset.id);
+                    const item = this.items.find(i => i.id === id);
+                    if (!item) return;
+                    
+                    let value = event.target.value;
+                    
+                    // Remove any non-numeric characters
+                    value = value.replace(/[^0-9]/g, '');
+                    
+                    switch(field) {
+                        case 'name': 
+                            item.name = event.target.value; 
+                            break;
+                        case 'price': 
+                            item.price = parseFloat(value) || 0;
+                            event.target.value = value;
+                            this.checkPriceField(event);
+                            break;
+                        case 'quantity': 
+                            item.quantity = value === '' ? 1 : parseInt(value) || 1;
+                            if (value !== '') {
+                                event.target.value = value;
+                            }
+                            break;
+                    }
+                    
+                    this.calculateAll();
+                }
+                
+                calculateAll() {
+                    let grandTotal = 0;
+                    let totalQty = 0;
+                    
+                    this.items.forEach(item => {
+                        const total = item.getTotal();
+                        const totalSpan = document.getElementById(`total-${item.id}`);
+                        if (totalSpan) {
+                            totalSpan.textContent = `Rs. ${Formatter.formatNumberWithCommas(total)}`;
+                        }
+                        grandTotal += total;
+                        totalQty += item.quantity;
+                    });
+                    
+                    document.getElementById('grandTotal').textContent = `Rs. ${Formatter.formatNumberWithCommas(grandTotal)}`;
+                    
+                    // Update total quantity display
+                    const totalQtyElement = document.getElementById('totalQuantity');
+                    if (totalQtyElement) {
+                        totalQtyElement.textContent = `🧦 Items : ${totalQty}`;
+                    }
+                    
+                    // Store totalQty for print
+                    this.totalQty = totalQty;
+                    
+                    // Update balance when total changes
+                    this.updateBalance();
+                }
+                
+                /*-------------------------------------------*/
+                /*  Print & Clear Methods                    */
+                /*-------------------------------------------*/
+                
+                printBill() {
+                    if (!this.validatePrices()) {
+                        return;
+                    }
+                    
+                    const customerName = this.customerNameInput.value.trim() || "Walk-in Customer";
+                    const dateTime = Formatter.getCurrentDateTime();
+                    const grandTotal = document.getElementById('grandTotal').textContent;
+                    
+                    const paidAmountValue = this.paidAmountInput.value.replace(/[^0-9]/g, '');
+                    const paidAmount = paidAmountValue === '' ? 0 : parseFloat(paidAmountValue) || 0;
+                    
+                    const grandTotalValue = parseFloat(grandTotal.replace('Rs. ', '').replace(/,/g, '')) || 0;
+                    const balance = paidAmount - grandTotalValue;
+                    
+                    BillingService.printBill(
+                        customerName, 
+                        dateTime, 
+                        this.items, 
+                        grandTotal, 
+                        this.totalQty || 0,
+                        paidAmount,
+                        balance
+                    );
+                }
+                
+                clearAll() {
+                    this.items = [];
+                    this.itemCount = 0;
+                    this.itemsListElement.innerHTML = '';
+                    this.customerNameInput.value = '';
+                    this.paidAmountInput.value = '';
+                    this.showEmptyMessage();
+                    document.getElementById('grandTotal').textContent = 'Rs. 0';
+                    
+                    // Reset total quantity
+                    const totalQtyElement = document.getElementById('totalQuantity');
+                    if (totalQtyElement) {
+                        totalQtyElement.textContent = '🧦 Items : 0';
+                    }
+                    
+                    // Reset balance
+                    this.updateBalance();
+                    
+                    // Focus on customer name input after clearing and open keyboard
+                    setTimeout(() => {
+                        this.customerNameInput.focus();
+                        
+                        // For mobile: open keyboard
+                        if ('ontouchstart' in window) {
+                            this.customerNameInput.click();
+                            this.customerNameInput.select();
+                        }
+                    }, 100);
+                }
+                
+                /*-------------------------------------------*/
+                /*  Empty Message Methods                    */
+                /*-------------------------------------------*/
+                
+                removeEmptyMessage() {
+                    const emptyMsg = document.getElementById('emptyMessage');
+                    if (emptyMsg) emptyMsg.remove();
+                }
+                
+                showEmptyMessage() {
+                    const emptyDiv = document.createElement('div');
+                    emptyDiv.className = 'empty-message';
+                    emptyDiv.id = 'emptyMessage';
+                    emptyDiv.innerHTML = '✨ Click <strong>"Add Item"</strong> button to add items';
+                    this.itemsListElement.appendChild(emptyDiv);
+                }
+            }
+            
+            /*-----------------------------------------------*/
+            /*  INITIALIZE APP                               */
+            /*-----------------------------------------------*/
+            
+            // Ensure this runs only once
+            if (!window.__billingControllerInitialized) {
+                window.__billingControllerInitialized = true;
+                
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => new BillingController());
+                } else {
+                    new BillingController();
+                }
+            }
+            
+        })();
+    </script>
+</body>
+</html>
