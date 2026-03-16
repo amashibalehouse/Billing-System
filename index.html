@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Amashi Bale House</title>
+    <title>Amashi Bale House - Peach & White Theme</title>
     
     <!-- Favicon - Clothing Emoji -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
@@ -24,13 +24,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%),
-                        url('images/background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;XZ
-            *
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #FFE5D0 0%, #FFCBA4 100%);
             min-height: 100vh;
             padding: 5px;
         }
@@ -41,11 +35,11 @@
             background: white;
             border-radius: 20px;
             padding: 15px 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.15);
         }
         
         h1 {
-            color: #333;
+            color: #CC7A4A;
             margin-bottom: 15px;
             font-size: 22px;
             text-align: center;
@@ -64,15 +58,15 @@
         /*-----------------------------------------------*/
         
         .customer-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFE5D0 0%, #FFCBA4 100%);
             padding: 15px;
             border-radius: 18px;
             margin-bottom: 18px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            border: 1px solid #ffffff50;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            border: 1px solid #FFD8B5;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.2);
         }
         
         .customer-row {
@@ -83,12 +77,12 @@
             padding: 12px;
             border-radius: 14px;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid #FFD8B5;
         }
         
         .customer-row label {
             font-weight: bold;
-            color: #333;
+            color: #B56A3A;
             font-size: 15px;
             display: flex;
             align-items: center;
@@ -99,7 +93,7 @@
         .customer-row input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #FFD8B5;
             border-radius: 14px;
             font-size: 16px;
             background: white;
@@ -108,19 +102,20 @@
         
         .customer-row input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            border-color: #FFA45C;
+            box-shadow: 0 0 0 3px rgba(255, 165, 92, 0.2);
         }
         
         .customer-row .balance-amount {
             font-size: 18px;
             font-weight: bold;
             padding: 14px 16px;
-            background: #e8f5e9;
+            background: #FFF0E5;
             border-radius: 14px;
-            border: 2px solid #28a745;
+            border: 2px solid #FFA45C;
             text-align: center;
             width: 100%;
+            color: #B56A3A;
         }
         
         .balance-positive {
@@ -168,11 +163,11 @@
         /*-----------------------------------------------*/
         
         .summary {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
             color: white;
             padding: 12px 16px;
             border-radius: 30px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 16px rgba(255, 140, 0, 0.25);
             text-align: center;
             width: fit-content;
             min-width: 160px;
@@ -197,6 +192,7 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
+            color: white;
         }
         
         .summary-item h3 span {
@@ -206,20 +202,22 @@
         .summary-item .total-amount {
             font-size: 20px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             word-break: break-word;
             line-height: 1.2;
+            color: white;
         }
         
         .summary-item .total-qty {
             font-size: 14px;
             font-weight: bold;
             opacity: 0.9;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             padding: 4px 10px;
             border-radius: 20px;
             margin-top: 4px;
             display: inline-block;
+            color: white;
         }
         
         /*-----------------------------------------------*/
@@ -231,17 +229,17 @@
             border-radius: 18px;
             margin-bottom: 14px;
             padding: 14px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #FFD8B5;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(255, 140, 0, 0.1);
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
         
         .item-row:hover {
-            border-color: #667eea;
-            box-shadow: 0 8px 12px rgba(102, 126, 234, 0.15);
+            border-color: #FFA45C;
+            box-shadow: 0 8px 12px rgba(255, 165, 92, 0.2);
         }
         
         .item-row.has-price-error {
@@ -255,7 +253,7 @@
         }
         
         .item-number {
-            background: #667eea;
+            background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
             color: white;
             width: 36px;
             height: 36px;
@@ -266,24 +264,25 @@
             font-weight: bold;
             font-size: 18px;
             flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3);
         }
         
         .item-row .item-name {
             flex: 1;
             padding: 12px 16px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #FFD8B5;
             border-radius: 14px;
             font-size: 16px;
-            background: #f8f9fa;
+            background: #FFF9F5;
             cursor: pointer;
             appearance: none;
             -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFA45C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 12px center;
             background-size: 20px;
             text-align: center;
+            color: #B56A3A;
         }
         
         .row-fields {
@@ -296,11 +295,12 @@
         .item-row .item-qty {
             width: 100%;
             padding: 16px 12px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #FFD8B5;
             border-radius: 14px;
             font-size: 18px;
-            background: #f8f9fa;
+            background: #FFF9F5;
             text-align: center;
+            color: #B56A3A;
         }
         
         /* Mobile number pad styles */
@@ -329,13 +329,13 @@
         
         .item-row .item-total {
             font-weight: bold;
-            color: #28a745;
+            color: #B56A3A;
             font-size: 18px;
             text-align: center;
-            background: #e8f5e9;
+            background: #FFF0E5;
             padding: 14px 12px;
             border-radius: 14px;
-            border: 2px solid #28a745;
+            border: 2px solid #FFA45C;
             width: 100%;
             white-space: nowrap;
             overflow: hidden;
@@ -343,7 +343,7 @@
         }
         
         .remove-btn {
-            background: #dc3545;
+            background: #FFA45C;
             color: white;
             border: none;
             width: 100%;
@@ -356,19 +356,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+            box-shadow: 0 4px 8px rgba(255, 165, 92, 0.3);
             -webkit-tap-highlight-color: transparent;
         }
         
         .remove-btn:hover {
-            background: #c82333;
+            background: #FF8C42;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+            box-shadow: 0 6px 12px rgba(255, 140, 66, 0.4);
         }
         
         .remove-btn:active {
             transform: translateY(0);
-            background: #b21f2d;
+            background: #FF7A2A;
         }
         
         /*-----------------------------------------------*/
@@ -376,7 +376,7 @@
         /*-----------------------------------------------*/
         
         .add-btn {
-            background: #28a745;
+            background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
             color: white;
             border: none;
             padding: 18px 20px;
@@ -387,7 +387,7 @@
             transition: all 0.3s ease;
             width: 100%;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 165, 92, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -412,33 +412,33 @@
         }
         
         .print-btn {
-            background: #17a2b8;
+            background: #FF8C42;
             color: white;
-            box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
         }
         
         .clear-btn {
-            background: #6c757d;
+            background: #B56A3A;
             color: white;
-            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+            box-shadow: 0 4px 12px rgba(181, 106, 58, 0.3);
         }
         
         .add-btn:hover {
-            background: #218838;
+            background: linear-gradient(135deg, #FFBC84 0%, #FF954C 100%);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+            box-shadow: 0 8px 16px rgba(255, 165, 92, 0.4);
         }
         
         .print-btn:hover {
-            background: #138496;
+            background: #FF7A2A;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(23, 162, 184, 0.4);
+            box-shadow: 0 8px 16px rgba(255, 140, 66, 0.4);
         }
         
         .clear-btn:hover {
-            background: #5a6268;
+            background: #A55A2A;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(108, 117, 125, 0.4);
+            box-shadow: 0 8px 16px rgba(165, 90, 42, 0.4);
         }
         
         .print-btn:active, .clear-btn:active, .add-btn:active, .remove-btn:active {
@@ -452,12 +452,12 @@
         .empty-message {
             text-align: center;
             padding: 35px 15px;
-            color: #999;
+            color: #B56A3A;
             font-size: 16px;
-            background: #f8f9fa;
+            background: #FFF9F5;
             border-radius: 20px;
             margin: 15px 0;
-            border: 2px dashed #ccc;
+            border: 2px dashed #FFD8B5;
             line-height: 1.6;
         }
         
@@ -469,11 +469,11 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #dc3545;
+            background: #FF8C42;
             color: white;
             padding: 12px 20px;
             border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
             font-size: 15px;
             font-weight: 500;
             z-index: 1000;
@@ -527,12 +527,14 @@
         
         select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #FFA45C;
+            box-shadow: 0 0 0 3px rgba(255, 165, 92, 0.2);
         }
 
         select option {
             text-align: center;
+            background: white;
+            color: #B56A3A;
         }
         
         /*-----------------------------------------------*/
@@ -554,13 +556,21 @@
         }
         
         .contact-item .fa-phone-alt {
-            color: #667eea;
+            color: #FFA45C;
         }
         
         /*-----------------------------------------------*/
-        /*  EXTRA SMALL DEVICES (under 380px)            */
+        /*  MEDIA QUERIES FOR RESPONSIVE DESIGN         */
         /*-----------------------------------------------*/
         
+        /* Mobile devices (up to 768px) */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+        
+        /* Extra small devices (under 380px) */
         @media (max-width: 380px) {
             .container {
                 padding: 10px 8px;
@@ -674,7 +684,7 @@
             "use strict";
             
             /*-----------------------------------------------*/
-            /*  CONSTANTS - Trousers එකතු කරපු තැන          */
+            /*  CONSTANTS                                    */
             /*-----------------------------------------------*/
             
             const ITEM_OPTIONS = ['Bags', 'Blouse', 'Frock', 'Leggings', 'Other', 'Shorts', 'Skirt', 'Slippers', 'T-shirt', 'Trousers', 'Panty'];
@@ -801,11 +811,11 @@
                                 .header {
                                     text-align: center;
                                     margin-bottom: 0px;
-                                    border-bottom: 2px solid #667eea;
+                                    border-bottom: 2px solid #FFA45C;
                                     padding-bottom: 0px;
                                 }
                                 .header h1 {
-                                    color: #333;
+                                    color: #B56A3A;
                                     font-size: 16px;
                                     margin-bottom: 5px;
                                     display: flex;
@@ -814,19 +824,19 @@
                                     gap: 8px;
                                 }
                                 .header p {
-                                    color: #666;
+                                    color: #FFA45C;
                                     font-size: 13px;
                                     font-weight: 500;
                                 }
                                 .customer-info {
-                                    background: #f8f9fa;
+                                    background: #FFF9F5;
                                     padding: 0px 12px;
                                     border-radius: 10px;
                                     margin-bottom: 3px;
                                     text-align: center;
                                     font-size: 13px;
-                                    color: #333;
-                                    border: 1px solid #e0e0e0;
+                                    color: #B56A3A;
+                                    border: 1px solid #FFD8B5;
                                 }
                                 table {
                                     width: 100%;
@@ -835,7 +845,7 @@
                                     font-size: 13px;
                                 }
                                 th {
-                                    background: #667eea;
+                                    background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
                                     color: white;
                                     padding: 8px 4px;
                                     font-size: 13px;
@@ -846,13 +856,14 @@
                                 th:last-child { border-radius: 0 8px 0 0; }
                                 td {
                                     padding: 6px 4px;
-                                    border-bottom: 1px solid #e0e0e0;
+                                    border-bottom: 1px solid #FFD8B5;
                                     text-align: center;
+                                    color: #B56A3A;
                                 }
                                 
                                 /* Total section - Single row */
                                 .total-section {
-                                    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+                                    background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
                                     color: white;
                                     padding: 2px 12px;
                                     border-radius: 12px;
@@ -905,7 +916,7 @@
                                     gap: 8px;
                                     margin-top: 0px;
                                     padding: 0px;
-                                    background: #f8f9fa;
+                                    background: #FFF9F5;
                                     border-radius: 10px;
                                 }
                                 .payment-item {
@@ -913,7 +924,7 @@
                                 }
                                 .payment-item .label {
                                     font-size: 12px;
-                                    color: #666;
+                                    color: #B56A3A;
                                     margin-bottom: 2px;
                                 }
                                 .payment-item .value {
@@ -930,10 +941,10 @@
                                     text-align: center;
                                     margin-top: 0px;
                                     padding-top: 0px;
-                                    border-top: 1px dashed #ccc;
+                                    border-top: 1px dashed #FFD8B5;
                                 }
                                 .footer p {
-                                    color: #666;
+                                    color: #B56A3A;
                                     font-size: 10px;
                                     margin: 3px 0;
                                 }
@@ -955,7 +966,7 @@
                                     font-size: 14px;
                                 }
                                 .contact-item .fa-phone-alt {
-                                    color: #667eea;
+                                    color: #FFA45C;
                                 }
                                 .contact-item .fa-whatsapp {
                                     color: #25D366;
