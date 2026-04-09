@@ -1,15 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Amashi Bale House - Peach & White Theme</title>
+    <title>Amashi Bale House - Billing System</title>
     
     <!-- Favicon - Clothing Emoji -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
     
     <!-- Font Awesome 6 for WhatsApp icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- html2canvas for JPG conversion -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     
     <style>
         /*-----------------------------------------------*/
@@ -395,7 +399,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        .print-btn, .clear-btn {
+        .print-btn, .clear-btn, .save-jpg-btn {
             width: 100%;
             padding: 18px 20px;
             border: none;
@@ -413,6 +417,12 @@
         
         .print-btn {
             background: #FF8C42;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+        }
+        
+        .save-jpg-btn {
+            background: #FF9142;
             color: white;
             box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
         }
@@ -435,13 +445,19 @@
             box-shadow: 0 8px 16px rgba(255, 140, 66, 0.4);
         }
         
+        .save-jpg-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4);
+        }
+        
         .clear-btn:hover {
             background: #A55A2A;
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(165, 90, 42, 0.4);
         }
         
-        .print-btn:active, .clear-btn:active, .add-btn:active, .remove-btn:active {
+        .print-btn:active, .clear-btn:active, .add-btn:active, .remove-btn:active, .save-jpg-btn:active {
             transform: translateY(0);
         }
         
@@ -503,6 +519,154 @@
                 transform: translateX(100%);
                 opacity: 0;
             }
+        }
+        
+        /*-----------------------------------------------*/
+        /*  BILL PREVIEW FOR JPG CAPTURE                 */
+        /*-----------------------------------------------*/
+        
+        .bill-preview {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .bill-preview-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .bill-preview-actions {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 0 0 20px 20px;
+            position: sticky;
+            bottom: 0;
+        }
+        
+        .bill-preview-actions button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-preview-btn {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .save-jpg-preview-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .bill-content {
+            padding: 20px;
+        }
+        
+        /* Bill Card Styles for JPG */
+        .bill-card {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .bill-card .header {
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #FFA45C;
+            padding-bottom: 10px;
+        }
+        
+        .bill-card .header h1 {
+            font-size: 20px;
+            color: #B56A3A;
+            margin-bottom: 5px;
+        }
+        
+        .bill-card .header p {
+            font-size: 12px;
+            color: #FFA45C;
+        }
+        
+        .bill-card .customer-info {
+            background: #FFF9F5;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 14px;
+            border: 1px solid #FFD8B5;
+        }
+        
+        .bill-card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+        
+        .bill-card th {
+            background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
+            color: white;
+            padding: 8px 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .bill-card td {
+            padding: 6px 4px;
+            border-bottom: 1px solid #FFD8B5;
+            text-align: center;
+            color: #B56A3A;
+        }
+        
+        .bill-card .total-section {
+            background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
+            color: white;
+            padding: 10px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .bill-card .payment-details {
+            background: #FFF9F5;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .bill-card .footer {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #FFD8B5;
+            font-size: 10px;
         }
         
         /*-----------------------------------------------*/
@@ -613,7 +777,7 @@
                 padding: 12px 8px;
             }
             
-            .add-btn, .print-btn, .clear-btn {
+            .add-btn, .print-btn, .clear-btn, .save-jpg-btn {
                 padding: 14px 16px;
                 font-size: 18px;
             }
@@ -621,6 +785,37 @@
             .item-row {
                 padding: 12px;
             }
+        }
+        
+        /* Loading Spinner */
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            z-index: 3000;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .loading-spinner .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #FFA45C;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -678,6 +873,12 @@
     <!-- Toast Notification -->
     <div id="validationToast" class="validation-toast" style="display: none;"></div>
 
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <span>Generating JPG...</span>
+    </div>
+
     <!-- JavaScript -->
     <script>
         (function() {
@@ -687,7 +888,7 @@
             /*  CONSTANTS                                    */
             /*-----------------------------------------------*/
             
-            const ITEM_OPTIONS = ['Bags', 'Blouse', 'Frock', 'Leggings', 'Other', 'Shorts', 'Skirt', 'Slippers', 'T-shirt', 'Trousers', 'Pants'];
+            const ITEM_OPTIONS = ['Bags', 'Blouse', 'Frock', 'Leggings', 'Other', 'Shirt', 'Shorts', 'Skirt', 'Slippers', 'T-shirt', 'Trousers', 'Pants'];
 
             ITEM_OPTIONS.sort((a, b) => a.localeCompare(b));
 
@@ -727,14 +928,21 @@
                     return `${month} ${day}, ${year}, ${hours}:${minutes} ${ampm}`;
                 }
                 
-                static showToast(message) {
+                static showToast(message, isError = false) {
                     const toast = document.getElementById('validationToast');
                     toast.textContent = message;
+                    toast.style.backgroundColor = isError ? '#dc3545' : '#FF8C42';
                     toast.style.display = 'block';
                     
                     setTimeout(() => {
                         toast.style.display = 'none';
+                        toast.style.backgroundColor = '#FF8C42';
                     }, 3000);
+                }
+                
+                static showLoading(show) {
+                    const spinner = document.getElementById('loadingSpinner');
+                    spinner.style.display = show ? 'flex' : 'none';
                 }
             }
             
@@ -772,286 +980,126 @@
                     `).join('');
                 }
                 
-                static printBill(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance) {
+                static getBillHTML(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance) {
                     const itemsHTML = this.generateItemsHTML(items);
+                    const balanceClass = balance >= 0 ? 'balance-positive' : 'balance-negative';
+                    const balanceText = balance >= 0 ? `Rs. ${Formatter.formatNumberWithCommas(Math.abs(balance))}` : `Rs. ${Formatter.formatNumberWithCommas(Math.abs(balance))} (Due)`;
                     
-                    const printWindow = window.open('', '_blank');
-                    printWindow.document.write(`
-                        <!DOCTYPE html>
-                        <html>
-                        <head>
-                            <title>Amashi Bale House</title>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                            <style>
-                                * {
-                                    margin: 0;
-                                    padding: 0;
-                                    box-sizing: border-box;
-                                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                                }
-                                body {
-                                    background: #f5f5f5;
-                                    padding: 5px;
-                                    min-height: 100vh;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                }
-                                .bill-card {
-                                    max-width: 100%;
-                                    width: 100%;
-                                    margin: 0 auto;
-                                    background: white;
-                                    border-radius: 15px;
-                                    padding: 0px;
-                                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                                }
-                                .header {
-                                    text-align: center;
-                                    margin-bottom: 0px;
-                                    border-bottom: 2px solid #FFA45C;
-                                    padding-bottom: 0px;
-                                }
-                                .header h1 {
-                                    color: #B56A3A;
-                                    font-size: 16px;
-                                    margin-bottom: 5px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    gap: 8px;
-                                }
-                                .header p {
-                                    color: #FFA45C;
-                                    font-size: 13px;
-                                    font-weight: 500;
-                                }
-                                .customer-info {
-                                    background: #FFF9F5;
-                                    padding: 0px 12px;
-                                    border-radius: 10px;
-                                    margin-bottom: 3px;
-                                    text-align: center;
-                                    font-size: 13px;
-                                    color: #B56A3A;
-                                    border: 1px solid #FFD8B5;
-                                }
-                                table {
-                                    width: 100%;
-                                    border-collapse: collapse;
-                                    margin-bottom: 15px;
-                                    font-size: 13px;
-                                }
-                                th {
-                                    background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
-                                    color: white;
-                                    padding: 8px 4px;
-                                    font-size: 13px;
-                                    font-weight: 600;
-                                    text-align: center;
-                                }
-                                th:first-child { border-radius: 8px 0 0 0; }
-                                th:last-child { border-radius: 0 8px 0 0; }
-                                td {
-                                    padding: 6px 4px;
-                                    border-bottom: 1px solid #FFD8B5;
-                                    text-align: center;
-                                    color: #B56A3A;
-                                }
-                                
-                                /* Total section - Single row */
-                                .total-section {
-                                    background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%);
-                                    color: white;
-                                    padding: 2px 12px;
-                                    border-radius: 12px;
-                                    margin-top: 2px;
-                                    text-align: center;
-                                }
-                                
-                                .total-row {
-                                    display: flex;
-                                    flex-direction: row;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                    gap: 5px;
-                                    flex-wrap: wrap;
-                                }
-                                
-                                .total-row h3 {
-                                    font-size: 15px;
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 3px;
-                                    margin: 0;
-                                    white-space: nowrap;
-                                }
-                                
-                                .total-row h3 span {
-                                    font-size: 15px;
-                                }
-                                
-                                .grand-total {
-                                    font-size: 18px;
-                                    font-weight: bold;
-                                    color: white;
-                                    white-space: nowrap;
-                                }
-                                
-                                .total-qty-badge {
-                                    font-size: 13px;
-                                    font-weight: bold;
-                                    background: rgba(255, 255, 255, 0.2);
-                                    padding: 3px 10px;
-                                    border-radius: 20px;
-                                    display: inline-block;
-                                    white-space: nowrap;
-                                }
-                                
-                                .payment-details {
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 8px;
-                                    margin-top: 0px;
-                                    padding: 0px;
-                                    background: #FFF9F5;
-                                    border-radius: 10px;
-                                }
-                                .payment-item {
-                                    text-align: center;
-                                }
-                                .payment-item .label {
-                                    font-size: 12px;
-                                    color: #B56A3A;
-                                    margin-bottom: 2px;
-                                }
-                                .payment-item .value {
-                                    font-size: 16px;
-                                    font-weight: bold;
-                                }
-                                .balance-positive {
-                                    color: #28a745;
-                                }
-                                .balance-negative {
-                                    color: #dc3545;
-                                }
-                                .footer {
-                                    text-align: center;
-                                    margin-top: 0px;
-                                    padding-top: 0px;
-                                    border-top: 1px dashed #FFD8B5;
-                                }
-                                .footer p {
-                                    color: #B56A3A;
-                                    font-size: 10px;
-                                    margin: 3px 0;
-                                }
-                                .contact-info {
-                                    display: flex;
-                                    flex-direction: column;
-                                    align-items: center;
-                                    gap: 5px;
-                                    margin-top: 4px;
-                                    font-size: 12px;
-                                }
-                                .contact-item {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 5px;
-                                    font-weight: 500;
-                                }
-                                .contact-item i {
-                                    font-size: 14px;
-                                }
-                                .contact-item .fa-phone-alt {
-                                    color: #FFA45C;
-                                }
-                                .contact-item .fa-whatsapp {
-                                    color: #25D366;
-                                }
-                                @media print {
-                                    body { background: white; padding: 0; }
-                                    .bill-card { box-shadow: none; padding: 5px; }
-                                }
-                                @media (max-width: 350px) {
-                                    .total-row {
-                                        flex-direction: column;
-                                        gap: 5px;
-                                    }
-                                    .grand-total {
-                                        font-size: 16px;
-                                    }
-                                }
-                            </style>
-                        </head>
-                        <body>
-                            <div class="bill-card">
-                                <div class="header">
-                                    <h1>
-                                        <span>👚</span>
-                                        <span>Amashi Bale House</span>
-                                        <span>👗</span>
-                                    </h1>
-                                    <p>${dateTime}</p>
-                                </div>
-                                <div class="customer-info">👤 <strong>${customerName}</strong></div>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Item</th>
-                                            <th>Price</th>
-                                            <th>Qty</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>${itemsHTML}</tbody>
-                                </table>
-                                
-                                <!-- Total Section - Single Row -->
-                                <div class="total-section">
-                                    <div class="total-row">
-                                        <h3><span>💰</span><strong>Total</strong><span>💲</span></h3>
-                                        <strong class="grand-total">${grandTotal}</strong>
-                                        <span class="total-qty-badge">🧦 Items : ${totalQty}</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="payment-details">
-                                    <div class="payment-item">
-                                        <div class="label">💰 Paid Amount</div>
-                                        <div class="value">${paidAmount ? `Rs. ${Formatter.formatNumberWithCommas(paidAmount)}` : 'Rs. 0'}</div>
-                                    </div>
-                                    <div class="payment-item">
-                                        <div class="label">💳 Balance</div>
-                                        <div class="value ${balance >= 0 ? 'balance-positive' : 'balance-negative'}">
-                                            ${balance ? `Rs. ${Formatter.formatNumberWithCommas(Math.abs(balance))}` : 'Rs. 0'}
-                                            ${balance < 0 ? ' (Due)' : ''}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="footer">
-                                    <p>
-                                    ✨ Thanks for Shopping ✨<br>
-                                    <strong>No Exchanges or Returns.</strong>
-                                    </p>
-                                    <div class="contact-info">
-                                        <div class="contact-item">
-                                            <i class="fas fa-phone-alt"></i> | 
-                                            <i class="fab fa-whatsapp"></i>
-                                            <span>${PHONE_NUMBER}</span>
-                                        </div>
-                                    </div>
+                    return `
+                        <div class="bill-card">
+                            <div class="header">
+                                <h1>
+                                    <span>👚</span>
+                                    <span>Amashi Bale House</span>
+                                    <span>👗</span>
+                                </h1>
+                                <p>${dateTime}</p>
+                            </div>
+                            <div class="customer-info">👤 <strong>${customerName}</strong></div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Item</th>
+                                        <th>Price</th>
+                                        <th>Qty</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${itemsHTML}</tbody>
+                            </table>
+                            
+                            <div class="total-section">
+                                <strong>Total: ${grandTotal}</strong> | Items: ${totalQty}
+                            </div>
+                            
+                            <div class="payment-details">
+                                <div>💰 Paid: ${paidAmount ? `Rs. ${Formatter.formatNumberWithCommas(paidAmount)}` : 'Rs. 0'}</div>
+                                <div class="${balanceClass}">💳 Balance: ${balanceText}</div>
+                            </div>
+                            
+                            <div class="footer">
+                                <p>✨ Thanks for Shopping ✨<br>
+                                <strong>No Exchanges or Returns.</strong></p>
+                                <div class="contact-info">
+                                    <i class="fas fa-phone-alt"></i> | 
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>${PHONE_NUMBER}</span>
                                 </div>
                             </div>
-                            <script>window.onload = () => window.print();<\/script>
-                        </body>
-                        </html>
-                    `);
-                    printWindow.document.close();
+                        </div>
+                    `;
+                }
+                
+                static async saveAsJPG(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance) {
+                    Formatter.showLoading(true);
+                    
+                    try {
+                        const billHTML = this.getBillHTML(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance);
+                        
+                        // Create a temporary container for the bill
+                        const tempContainer = document.createElement('div');
+                        tempContainer.style.position = 'absolute';
+                        tempContainer.style.top = '-9999px';
+                        tempContainer.style.left = '-9999px';
+                        tempContainer.style.backgroundColor = 'white';
+                        tempContainer.style.padding = '20px';
+                        tempContainer.style.width = '400px';
+                        tempContainer.innerHTML = billHTML;
+                        
+                        // Add necessary styles to the temp container
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            .bill-card { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; width: 100%; }
+                            .bill-card .header { text-align: center; margin-bottom: 15px; border-bottom: 2px solid #FFA45C; padding-bottom: 10px; }
+                            .bill-card .header h1 { font-size: 20px; color: #B56A3A; margin-bottom: 5px; }
+                            .bill-card .header p { font-size: 12px; color: #FFA45C; }
+                            .bill-card .customer-info { background: #FFF9F5; padding: 10px; border-radius: 10px; margin-bottom: 15px; text-align: center; font-size: 14px; border: 1px solid #FFD8B5; }
+                            .bill-card table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 12px; }
+                            .bill-card th { background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%); color: white; padding: 8px 4px; font-size: 12px; text-align: center; }
+                            .bill-card td { padding: 6px 4px; border-bottom: 1px solid #FFD8B5; text-align: center; color: #B56A3A; }
+                            .bill-card .total-section { background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%); color: white; padding: 10px; border-radius: 12px; margin: 15px 0; text-align: center; font-size: 14px; }
+                            .bill-card .payment-details { background: #FFF9F5; padding: 10px; border-radius: 10px; margin: 10px 0; text-align: center; font-size: 14px; }
+                            .bill-card .payment-details div { margin: 5px 0; }
+                            .bill-card .footer { text-align: center; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #FFD8B5; font-size: 10px; }
+                            .bill-card .contact-info { margin-top: 8px; font-size: 12px; }
+                            .balance-positive { color: #28a745; }
+                            .balance-negative { color: #dc3545; }
+                        `;
+                        tempContainer.appendChild(style);
+                        document.body.appendChild(tempContainer);
+                        
+                        // Use html2canvas to capture the bill
+                        const billElement = tempContainer.querySelector('.bill-card');
+                        const canvas = await html2canvas(billElement, {
+                            scale: 3,
+                            backgroundColor: '#ffffff',
+                            logging: false,
+                            useCORS: true
+                        });
+                        
+                        // Remove temp container
+                        document.body.removeChild(tempContainer);
+                        
+                        // Convert canvas to JPG and download
+                        const link = document.createElement('a');
+                        const fileName = `bill_${customerName.replace(/\s/g, '_')}_${Date.now()}.jpg`;
+                        link.download = fileName;
+                        link.href = canvas.toDataURL('image/jpeg', 0.95);
+                        link.click();
+                        
+                        Formatter.showToast(`Bill saved as ${fileName}`, false);
+                        
+                        // Also show preview option
+                        return canvas.toDataURL('image/jpeg', 0.95);
+                        
+                    } catch (error) {
+                        console.error('Error generating JPG:', error);
+                        Formatter.showToast('Error generating JPG. Please try again.', true);
+                        return null;
+                    } finally {
+                        Formatter.showLoading(false);
+                    }
                 }
             }
             
@@ -1107,6 +1155,10 @@
                             <span>🖨️</span>
                             <span>Print Bill</span>
                         </button>
+                        <button class="save-jpg-btn" id="saveJpgBtn">
+                            <span>📸</span>
+                            <span>Save as JPG</span>
+                        </button>
                         <button class="clear-btn" id="clearAllBtn">
                             <span>🔄</span>
                             <span>Clear All</span>
@@ -1132,6 +1184,7 @@
                 attachEvents() {
                     document.getElementById('addItemBtn').addEventListener('click', () => this.addNewItem());
                     document.getElementById('printBillBtn').addEventListener('click', () => this.printBill());
+                    document.getElementById('saveJpgBtn').addEventListener('click', () => this.saveAsJPG());
                     document.getElementById('clearAllBtn').addEventListener('click', () => this.clearAll());
                     
                     // Add keydown event for customer name Enter key
@@ -1216,7 +1269,7 @@
                             
                             // Customer name input - handled separately above
                             // Item price input
-                            if (activeElement.classList.contains('item-price')) {
+                            if (activeElement.classList && activeElement.classList.contains('item-price')) {
                                 e.preventDefault();
                                 // Find the corresponding qty input in the same item row
                                 const itemRow = activeElement.closest('.item-row');
@@ -1235,7 +1288,7 @@
                                 }
                             }
                             // Item qty input
-                            else if (activeElement.classList.contains('item-qty')) {
+                            else if (activeElement.classList && activeElement.classList.contains('item-qty')) {
                                 e.preventDefault();
                                 // Find the next item's price input
                                 const itemRow = activeElement.closest('.item-row');
@@ -1262,8 +1315,8 @@
                             // Paid amount input
                             else if (activeElement.id === 'paidAmount') {
                                 e.preventDefault();
-                                // Focus on print bill button
-                                document.getElementById('printBillBtn').focus();
+                                // Focus on save JPG button
+                                document.getElementById('saveJpgBtn').focus();
                             }
                         }
                     });
@@ -1439,7 +1492,7 @@
                 
                 validatePrices() {
                     if (this.items.length === 0) {
-                        Formatter.showToast('Please add items first!');
+                        Formatter.showToast('Please add items first!', true);
                         return false;
                     }
                     
@@ -1449,7 +1502,7 @@
                         
                         if (!priceInput.value || priceInput.value === '' || parseFloat(priceInput.value) <= 0) {
                             priceInput.classList.add('error');
-                            Formatter.showToast(`Item ${item.id}: Please enter a valid price`);
+                            Formatter.showToast(`Item ${item.id}: Please enter a valid price`, true);
                             return false;
                         }
                     }
@@ -1521,7 +1574,7 @@
                 }
                 
                 /*-------------------------------------------*/
-                /*  Print & Clear Methods                    */
+                /*  Print & Save Methods                     */
                 /*-------------------------------------------*/
                 
                 printBill() {
@@ -1544,6 +1597,32 @@
                         dateTime, 
                         this.items, 
                         grandTotal, 
+                        this.totalQty || 0,
+                        paidAmount,
+                        balance
+                    );
+                }
+                
+                async saveAsJPG() {
+                    if (!this.validatePrices()) {
+                        return;
+                    }
+                    
+                    const customerName = this.customerNameInput.value.trim() || "Walk-in Customer";
+                    const dateTime = Formatter.getCurrentDateTime();
+                    const grandTotal = document.getElementById('grandTotal').textContent;
+                    
+                    const paidAmountValue = this.paidAmountInput.value.replace(/[^0-9]/g, '');
+                    const paidAmount = paidAmountValue === '' ? 0 : parseFloat(paidAmountValue) || 0;
+                    
+                    const grandTotalValue = parseFloat(grandTotal.replace('Rs. ', '').replace(/,/g, '')) || 0;
+                    const balance = paidAmount - grandTotalValue;
+                    
+                    await BillingService.saveAsJPG(
+                        customerName,
+                        dateTime,
+                        this.items,
+                        grandTotal,
                         this.totalQty || 0,
                         paidAmount,
                         balance
@@ -1597,6 +1676,45 @@
                     this.itemsListElement.appendChild(emptyDiv);
                 }
             }
+            
+            // Add printBill static method to BillingService
+            BillingService.printBill = function(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance) {
+                const printWindow = window.open('', '_blank');
+                const billHTML = this.getBillHTML(customerName, dateTime, items, grandTotal, totalQty, paidAmount, balance);
+                
+                printWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Amashi Bale House</title>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <style>
+                            * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+                            body { background: #f5f5f5; padding: 20px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+                            .bill-card { max-width: 100%; width: 100%; margin: 0 auto; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+                            .header { text-align: center; margin-bottom: 15px; border-bottom: 2px solid #FFA45C; padding-bottom: 10px; }
+                            .header h1 { color: #B56A3A; font-size: 20px; margin-bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+                            .header p { color: #FFA45C; font-size: 12px; }
+                            .customer-info { background: #FFF9F5; padding: 10px; border-radius: 10px; margin-bottom: 15px; text-align: center; font-size: 14px; border: 1px solid #FFD8B5; }
+                            table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 12px; }
+                            th { background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%); color: white; padding: 8px 4px; text-align: center; }
+                            td { padding: 6px 4px; border-bottom: 1px solid #FFD8B5; text-align: center; color: #B56A3A; }
+                            .total-section { background: linear-gradient(135deg, #FFCBA4 0%, #FFA45C 100%); color: white; padding: 10px; border-radius: 12px; margin: 15px 0; text-align: center; }
+                            .payment-details { background: #FFF9F5; padding: 10px; border-radius: 10px; margin: 10px 0; text-align: center; }
+                            .footer { text-align: center; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #FFD8B5; font-size: 10px; }
+                            .balance-positive { color: #28a745; }
+                            .balance-negative { color: #dc3545; }
+                            @media print { body { background: white; padding: 0; } .bill-card { box-shadow: none; } }
+                        </style>
+                    </head>
+                    <body>${billHTML}
+                    <script>window.onload = () => window.print();<\\/script>
+                    </body>
+                    </html>
+                `);
+                printWindow.document.close();
+            };
             
             /*-----------------------------------------------*/
             /*  INITIALIZE APP                               */
